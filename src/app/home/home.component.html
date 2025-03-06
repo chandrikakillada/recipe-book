@@ -1,6 +1,24 @@
-<!-- <div>
-  Select
-  <ul *ngFor="let ingredient of recipe.ingredient">
-    <li *ngFor="let item of ingredient">{{ item }}</li>
-  </ul>
-</div> -->
+<div class="recipe-grid-container">
+  <h2 class="heading">All Recipes</h2>
+
+  <div *ngIf="allRecipes.length > 0; else noRecipes" class="recipe-grid">
+    <div class="recipe-card" *ngFor="let recipe of allRecipes">
+      <img [src]="recipe.image" alt="{{ recipe.name }}" class="recipe-image" />
+      <div class="recipe-details">
+        <h3 class="recipe-title">{{ recipe.name }}</h3>
+        <p class="ingredients">
+          <strong>Ingredients:</strong>
+          {{ recipe.ingredients.slice(0, 3).join(", ") }}...
+        </p>
+        <p class="calories">
+          Calories per serving: <span>{{ recipe.caloriesPerServing }}</span>
+        </p>
+        <button class="view-more-btn">View More</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noRecipes>
+    <p class="no-recipes">No recipes available at the moment.</p>
+  </ng-template>
+</div>

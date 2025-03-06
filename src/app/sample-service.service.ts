@@ -6,27 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SampleServiceService {
-  url = 'https://dummyjson.com/recipes';
+  URL = 'https://dummyjson.com/recipes';
 
   constructor(private http: HttpClient) {}
 
-  public searchRecipes(query: string): Observable<any> {
+  searchRecipes(query: string): Observable<any> {
     console.log('searchRecipes called with query:', query);
-    return this.http.get(`${this.url}/search?q=${query}`);
+    return this.http.get(`${this.URL}/search?q=${query}`);
   }
 
-  public getRecipeById(id: number): Observable<any> {
+  getRecipeById(id: number): Observable<any> {
     console.log('Fetching recipe with ID:', id);
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(`${this.URL}/:${id}`);
   }
 
-  public getData(): Observable<any> {
+  getData(): Observable<any> {
     console.log('Fetching all recipes...');
-    return this.http.get(this.url);
-  }
-
-  public getIngredients(): Observable<any> {
-    console.log('Fetching all Ingredients...');
-    return this.http.get<any[]>(`${this.url}/ingredients`);
+    return this.http.get(this.URL);
   }
 }

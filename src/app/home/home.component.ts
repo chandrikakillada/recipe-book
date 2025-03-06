@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SampleServiceService } from '../sample-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -10,18 +11,24 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  recipe: any = [];
+  allRecipes: any = [];
   constructor(private service: SampleServiceService) {}
   ngOnInit(): void {
-    this.makeRecipe();
+    this.showAllRecipes();
   }
-
-  makeRecipe() {
-    this.service.getIngredients().subscribe({
+  showAllRecipes() {
+    this.service.getData().subscribe({
       next: (data) => {
-        this.recipe = data.recipes;
+        if (data && data.recipes) {
+          this.allRecipes = data.recipes;
+          console.log('Recipes fetched successfully:', this.allRecipes);
+        } else {
+          console.warn('No recipes found or incorrect API response:', data);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching recipes:', err);
       },
     });
-    console.log(this.recipe);
   }
 }
