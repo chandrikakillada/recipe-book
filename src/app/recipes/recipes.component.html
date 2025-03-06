@@ -19,20 +19,28 @@
     <h3>Ingredients:</h3>
     <ul class="ingredients-list">
       <li *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient }}<input type="checkbox" (click)="checkBoxClick()" />
+        {{ ingredient.name }}
+        <input
+          type="checkbox"
+          [(ngModel)]="ingredient.checked"
+          (ngModelChange)="checkBoxClick()"
+        />
       </li>
     </ul>
+    <div *ngIf="instructions">
+      <h3>Instructions:</h3>
+      <ol class="instructions-list">
+        <li *ngFor="let instruction of recipe.instructions">
+          {{ instruction }}
+        </li>
+      </ol>
 
-    <h3>Instructions:</h3>
-    <ol class="instructions-list">
-      <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
-    </ol>
+      <div class="recipe-tags">
+        <h4>Tags:</h4>
+        <span *ngFor="let tag of recipe.tags" class="tag">{{ tag }}</span>
+      </div>
 
-    <div class="recipe-tags">
-      <h4>Tags:</h4>
-      <span *ngFor="let tag of recipe.tags" class="tag">{{ tag }}</span>
+      <button class="back-button" [routerLink]="['/']">Go Back</button>
     </div>
-
-    <button class="back-button" [routerLink]="['/']">Go Back</button>
   </div>
 </div>

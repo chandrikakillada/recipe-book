@@ -15,8 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class RecipesComponent implements OnInit {
   recipe: any;
   recipes: any[] = [];
-  checked: boolean = false;
-  ingredients: Number = 0;
+  count: any;
+  instructions: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,14 +27,27 @@ export class RecipesComponent implements OnInit {
     const recipeId = this.route.snapshot.paramMap.get('id');
     if (recipeId) {
       this.service.getRecipeById(+recipeId).subscribe((data) => {
-        this.recipe = data;
+        this.recipe = {
+          ...data,
+          ingredients: data.ingredients.map((ingredient: string) => ({
+            name: ingredient,
+            checked: false,
+          })),
+        };
       });
     }
-    console.log('entered recipe');
   }
 
   checkBoxClick() {
-    this.ingredients = this.recipe.ingredients.length;
-    console.log(this.ingredients);
+    this.count = 0;
+    this.recipe.ingredients.forEach((item: any) => {
+      if (item.checked) {
+        this.count++;
+      }
+    });
+    if (this.count == this.recipe.ingredients.length) {
+      this.instructions = true;
+    }
+    console.log('Checked ingredients count:', this.count);
   }
 }

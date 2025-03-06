@@ -24,4 +24,9 @@ export class SampleServiceService {
     console.log('Fetching all recipes...');
     return this.http.get(this.url);
   }
+
+  public getIngredients(): Observable<any> {
+    console.log('Fetching all Ingredients...');
+    return this.http.get<any[]>(`${this.url}/ingredients`);
+  }
 }
