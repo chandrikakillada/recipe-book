@@ -1,0 +1,23 @@
+<div class="search">
+  <input [(ngModel)]="searchTerm" placeholder="Search anything..." />
+  <button (click)="getSearch()">Search</button>
+</div>
+
+<div *ngIf="isLoading" class="loading">Loading recipes...</div>
+
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="recipes.length > 0 && !isLoading" class="recipe-list">
+  <div *ngFor="let recipe of recipes" class="recipe-card">
+    <img [src]="recipe.image" alt="{{ recipe.name }}" />
+    <h4>{{ recipe.name }}</h4>
+    <div class="details">
+      <span>Cuisine: {{ recipe.cuisine }}</span>
+      <span>Difficulty: {{ recipe.difficulty }}</span>
+      <span>Rating: ⭐{{ recipe.rating }}</span>
+    </div>
+    <a [routerLink]="['/recipe', recipe.id]">View Recipe</a>
+  </div>
+</div>
