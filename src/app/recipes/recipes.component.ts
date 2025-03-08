@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SampleServiceService } from '../sample-service.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { RouterLink } from '@angular/router';
+
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css',
 })
-export class RecipesComponent implements OnInit {
+export class RecipesComponent {
   recipe: any;
   recipes: any[] = [];
   count: any;
@@ -22,7 +22,6 @@ export class RecipesComponent implements OnInit {
     private route: ActivatedRoute,
     private service: SampleServiceService
   ) {}
-
   ngOnInit() {
     const recipeId = this.route.snapshot.paramMap.get('id');
     if (recipeId) {
@@ -37,7 +36,6 @@ export class RecipesComponent implements OnInit {
       });
     }
   }
-
   checkBoxClick() {
     this.count = 0;
     this.recipe.ingredients.forEach((item: any) => {

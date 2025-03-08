@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SampleServiceService } from '../sample-service.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,40 +10,28 @@ import { RouterLink } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
-export class SearchComponent {
-  searchTerm: string = '';
-  recipes: any[] = [];
+export class SearchComponent implements OnInit {
+  filteredRecipe: any = [];
   isLoading: boolean = false;
-  errorMessage: string = '';
 
   constructor(private service: SampleServiceService) {
     console.log('Service:', service);
   }
-
-  getSearch() {
-    if (!this.searchTerm.trim()) {
-      this.errorMessage = 'Please enter a search term.';
-      return;
-    }
-
-    this.isLoading = true;
-    this.errorMessage = '';
-
-    console.log('Search Term:', this.searchTerm);
-    this.service.searchRecipes(this.searchTerm).subscribe({
+  ngOnInit(): void {
+    this.getRecipes();
+  }
+  getRecipes() {
+    this.service.searchRecipes().subscribe({
       next: (data) => {
-        this.recipes = data.recipes || [];
-        this.isLoading = false;
-        console.log('Recipes:', this.recipes);
-
-        if (this.recipes.length === 0) {
-          this.errorMessage = 'No recipes found.';
+        if (data && data.recipes) {
+          this.filteredRecipe = data.recipes;
+          console.log('Recipes fetched successfully:', this.filteredRecipe);
+        } else {
+          console.warn('No recipes found or incorrect API response:', data);
         }
       },
       error: (err) => {
         console.error('Error fetching recipes:', err);
-        this.errorMessage = 'Failed to fetch recipes. Please try again later.';
-        this.isLoading = false;
       },
     });
   }

@@ -1,5 +1,5 @@
-<div class="recipe-container" *ngIf="recipe">
-  <div class="recipe-card">
+<!-- <div class="recipe-container" *ngIf="recipe">
+  <div class="recipe-card container">
     <img [src]="recipe.image" alt="{{ recipe.name }}" class="recipe-image" />
     <h2 class="recipe-title">{{ recipe.name }}</h2>
     <div class="recipe-meta">
@@ -27,6 +27,60 @@
         />
       </li>
     </ul>
+    <div *ngIf="instructions">
+      <h3>Instructions:</h3>
+      <ol class="instructions-list">
+        <li *ngFor="let instruction of recipe.instructions">
+          {{ instruction }}
+        </li>
+      </ol>
+
+      <div class="recipe-tags">
+        <h4>Tags:</h4>
+        <span *ngFor="let tag of recipe.tags" class="tag">{{ tag }}</span>
+      </div>
+
+      <button class="back-button" [routerLink]="['/']">Go Back</button>
+    </div>
+  </div>
+</div> -->
+
+<div
+  class="container flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-300 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+>
+  <img
+    [src]="recipe.image"
+    alt="{{ recipe.name }}"
+    class="object-cover rounded-t-lg w-150 md:rounded-none md:rounded-s-lg"
+  />
+
+  <div class="p-6 leading-normal">
+    <h2 class="recipe-title">{{ recipe.name }}</h2>
+    <div class="recipe-meta">
+      <span>Cuisine: {{ recipe.cuisine }}</span> |
+      <span>Difficulty: {{ recipe.difficulty }}</span> |
+      <span
+        >Rating: ⭐{{ recipe.rating }} ({{ recipe.reviewCount }} reviews)</span
+      >
+    </div>
+    <div class="recipe-info">
+      <span>Prep Time: {{ recipe.prepTimeMinutes }} min</span>
+      <span>Cook Time: {{ recipe.cookTimeMinutes }} min</span>
+      <span>Calories: {{ recipe.caloriesPerServing }} kcal</span>
+      <span>Servings: {{ recipe.servings }}</span>
+    </div>
+
+    <h3>Ingredients:</h3>
+    <div class="ingredients-list">
+      <span *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }}
+        <!-- <input
+          type="checkbox"
+          [(ngModel)]="ingredient.checked"
+          (ngModelChange)="checkBoxClick()"
+        /> -->
+      </span>
+    </div>
     <div *ngIf="instructions">
       <h3>Instructions:</h3>
       <ol class="instructions-list">
