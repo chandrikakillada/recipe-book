@@ -1,100 +1,73 @@
-<!-- <div class="recipe-container" *ngIf="recipe">
-  <div class="recipe-card container">
-    <img [src]="recipe.image" alt="{{ recipe.name }}" class="recipe-image" />
-    <h2 class="recipe-title">{{ recipe.name }}</h2>
-    <div class="recipe-meta">
-      <span>Cuisine: {{ recipe.cuisine }}</span> |
-      <span>Difficulty: {{ recipe.difficulty }}</span> |
-      <span
-        >Rating: ⭐{{ recipe.rating }} ({{ recipe.reviewCount }} reviews)</span
-      >
-    </div>
-    <div class="recipe-info">
-      <span>Prep Time: {{ recipe.prepTimeMinutes }} min</span>
-      <span>Cook Time: {{ recipe.cookTimeMinutes }} min</span>
-      <span>Calories: {{ recipe.caloriesPerServing }} kcal</span>
-      <span>Servings: {{ recipe.servings }}</span>
-    </div>
-
-    <h3>Ingredients:</h3>
-    <ul class="ingredients-list">
-      <li *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }}
-        <input
-          type="checkbox"
-          [(ngModel)]="ingredient.checked"
-          (ngModelChange)="checkBoxClick()"
-        />
-      </li>
-    </ul>
-    <div *ngIf="instructions">
-      <h3>Instructions:</h3>
-      <ol class="instructions-list">
-        <li *ngFor="let instruction of recipe.instructions">
-          {{ instruction }}
-        </li>
-      </ol>
-
-      <div class="recipe-tags">
-        <h4>Tags:</h4>
-        <span *ngFor="let tag of recipe.tags" class="tag">{{ tag }}</span>
-      </div>
-
-      <button class="back-button" [routerLink]="['/']">Go Back</button>
-    </div>
-  </div>
-</div> -->
-
 <div
-  class="container flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-300 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+  class="container flex flex-col md:flex-row bg-white border border-gray-200 rounded-lg shadow-sm max-w-4xl mx-auto my-8 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mt-20"
 >
   <img
     [src]="recipe.image"
     alt="{{ recipe.name }}"
-    class="object-cover rounded-t-lg w-150 md:rounded-none md:rounded-s-lg"
+    class="object-cover rounded-t-lg w-full md:w-1/2 md:rounded-none md:rounded-s-lg"
   />
 
-  <div class="p-6 leading-normal">
-    <h2 class="recipe-title">{{ recipe.name }}</h2>
-    <div class="recipe-meta">
+  <div class="p-6 leading-normal w-full md:w-1/2 bg-yellow-50 rounded-r-lg">
+    <h2 class="text-2xl font-bold mb-2">{{ recipe.name }}</h2>
+    <div class="text-gray-600 mb-4">
       <span>Cuisine: {{ recipe.cuisine }}</span> |
       <span>Difficulty: {{ recipe.difficulty }}</span> |
       <span
         >Rating: ⭐{{ recipe.rating }} ({{ recipe.reviewCount }} reviews)</span
       >
     </div>
-    <div class="recipe-info">
-      <span>Prep Time: {{ recipe.prepTimeMinutes }} min</span>
-      <span>Cook Time: {{ recipe.cookTimeMinutes }} min</span>
-      <span>Calories: {{ recipe.caloriesPerServing }} kcal</span>
-      <span>Servings: {{ recipe.servings }}</span>
+
+    <!-- Time and Nutritional Info -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span
+        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+        >Prep Time: {{ recipe.prepTimeMinutes }} min</span
+      >
+      <span
+        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+        >Cook Time: {{ recipe.cookTimeMinutes }} min</span
+      >
+      <span
+        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+        >Calories: {{ recipe.caloriesPerServing }} kcal</span
+      >
+      <span
+        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+        >Servings: {{ recipe.servings }}</span
+      >
     </div>
 
-    <h3>Ingredients:</h3>
-    <div class="ingredients-list">
-      <span *ngFor="let ingredient of recipe.ingredients">
+    <h3 class="text-lg font-semibold mb-2 text-blue-800">Ingredients:</h3>
+    <ul class="mb-4 text-gray-700 list-disc list-inside space-y-1">
+      <li *ngFor="let ingredient of recipe.ingredients">
         {{ ingredient.name }}
-        <!-- <input
-          type="checkbox"
-          [(ngModel)]="ingredient.checked"
-          (ngModelChange)="checkBoxClick()"
-        /> -->
-      </span>
-    </div>
+      </li>
+    </ul>
+
     <div *ngIf="instructions">
-      <h3>Instructions:</h3>
-      <ol class="instructions-list">
+      <h3 class="text-lg font-semibold mb-2 text-blue-800">Instructions:</h3>
+      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-1">
         <li *ngFor="let instruction of recipe.instructions">
           {{ instruction }}
         </li>
       </ol>
 
-      <div class="recipe-tags">
-        <h4>Tags:</h4>
-        <span *ngFor="let tag of recipe.tags" class="tag">{{ tag }}</span>
+      <div class="mb-4">
+        <h4 class="text-md font-semibold text-blue-800 mb-2">Tags:</h4>
+        <span
+          *ngFor="let tag of recipe.tags"
+          class="bg-gray-200 text-gray-800 px-2 py-1 rounded mr-2 mb-2 inline-block text-sm"
+        >
+          {{ tag }}
+        </span>
       </div>
 
-      <button class="back-button" [routerLink]="['/']">Go Back</button>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+        [routerLink]="['/']"
+      >
+        Go Back
+      </button>
     </div>
   </div>
 </div>

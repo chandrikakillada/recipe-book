@@ -10,11 +10,6 @@
         >
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
-          <!--
-              Icon when menu is closed.
-  
-              Menu open: "hidden", Menu closed: "block"
-            -->
           <svg
             class="block size-6"
             fill="none"
@@ -30,11 +25,7 @@
               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
             />
           </svg>
-          <!--
-              Icon when menu is open.
-  
-              Menu open: "block", Menu closed: "hidden"
-            -->
+
           <svg
             class="hidden size-6"
             fill="none"
@@ -73,26 +64,31 @@
             >
             <a
               class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-700 hover:text-white"
-              >sample</a
+              >Saved recipes</a
             >
             <a
               href="#"
               class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-700 hover:text-white"
-              >sample</a
+              >Add a recipe</a
             >
             <a
               href="#"
               class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-700 hover:text-white"
-              >sample</a
+              >Build your own recipe</a
             >
           </div>
         </div>
       </div>
+      <div class="login">
+        <a routerLink="/login">Login/ create an account</a>
+        <a routerLink="/login" *ngIf="loginStatus == true">{{ username }}</a>
+      </div>
+
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
       >
         <!-- search -->
-        <div class="max-w-md mx-auto w-100">
+        <!-- <div class="max-w-md mx-auto w-100">
           <input
             type="search"
             id="default-search"
@@ -109,7 +105,7 @@
           >
             Search
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -142,3 +138,5 @@
     </div>
   </div>
 </nav>
+
+<router-outlet></router-outlet>

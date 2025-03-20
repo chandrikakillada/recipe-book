@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SampleServiceService {
   URL = 'https://dummyjson.com/recipes';
-  searchTerm: string = 'pasta';
+  searchTerm: string = '';
 
   constructor(private http: HttpClient) {}
-
   searchRecipes(): Observable<any> {
-    console.log('searchRecipes called with query:', this.searchTerm);
-    return this.http.get(`${this.URL}/search?q=${this.searchTerm}`);
+    console.log('API called with search term:', this.searchTerm);
+    const apiUrl = `${this.URL}/search?q=${this.searchTerm}`;
+    console.log('API URL:', apiUrl);
+    return this.http
+      .get(apiUrl)
+      .pipe(tap((response) => console.log('API Response:', response)));
   }
 
-  getSearchTerm(term: string) {
-    console.log('loggin inside service: ', term);
+  getSearchTerm(term: string): Observable<any> {
+    console.log('Logging inside service: ', term);
     this.searchTerm = term;
-    this.searchRecipes();
+    return this.searchRecipes();
   }
 
   getRecipeById(id: number): Observable<any> {

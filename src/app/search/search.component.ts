@@ -21,7 +21,8 @@ export class SearchComponent implements OnInit {
     this.getRecipes();
   }
   getRecipes() {
-    this.service.searchRecipes().subscribe({
+    this.isLoading = true;
+    this.service.getSearchTerm(this.service.searchTerm).subscribe({
       next: (data) => {
         if (data && data.recipes) {
           this.filteredRecipe = data.recipes;
@@ -29,9 +30,11 @@ export class SearchComponent implements OnInit {
         } else {
           console.warn('No recipes found or incorrect API response:', data);
         }
+        this.isLoading = false;
       },
       error: (err) => {
         console.error('Error fetching recipes:', err);
+        this.isLoading = false;
       },
     });
   }
