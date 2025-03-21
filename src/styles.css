@@ -1,5 +1,31 @@
+@import "https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap";
 @import "tailwindcss";
+
+*,
+*::after,
+*::before {
+  font-family: "DynaPuff", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
 .container {
   background-color: rgb(254, 238, 216);
   color: rgb(33, 22, 8);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit !important;
+}
+ul li {
+  cursor: pointer;
+}
+
+a {
+  font-family: inherit;
+  font-size: inherit;
 }
