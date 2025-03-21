@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,11 +10,13 @@ import { AuthService } from '../services/auth.service';
 import { error } from 'console';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, RouterOutlet],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -35,7 +37,7 @@ export class LoginComponent {
       next: (response) => {
         this.authService.saveToken(response.token);
         console.log('Login Successful!', credentials.email);
-        this.authService.username = credentials.email;
+        this.authService.updateUsername(credentials.email);
         this.router.navigate(['/home']);
       },
     });

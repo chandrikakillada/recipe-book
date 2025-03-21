@@ -79,11 +79,15 @@
           </div>
         </div>
       </div>
-      <div class="login">
+      <div class="login" *ngIf="!loginStatus; else loggedInBlock">
         <a routerLink="/login">Login/ create an account</a>
-        <a routerLink="/login" *ngIf="loginStatus == true">{{ username }}</a>
       </div>
-
+      <ng-template #loggedInBlock>
+        <div class="login">
+          <span>{{ username }}</span>
+          <button (click)="logout()">/Logout</button>
+        </div>
+      </ng-template>
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
       >

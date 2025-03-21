@@ -32,14 +32,21 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService
   ) {}
   ngOnInit(): void {
-    this.authService.username.subscribe({
-      next: (response) => (this.username = response),
+    this.authService.currentUsername.subscribe({
+      next: (response) => {
+        this.username = response;
+        this.loginStatus = true;
+      },
     });
     console.log('Username', this.username);
-    if (this.username != '') {
-      this.loginStatus = true;
-    }
   }
+
+  logout() {
+    this.authService.saveToken('');
+    this.authService.updateUsername('');
+    this.loginStatus = false;
+  }
+
   getSearch() {
     if (!this.searchTerm.trim()) {
       this.errorMessage = 'Please enter a search term.';

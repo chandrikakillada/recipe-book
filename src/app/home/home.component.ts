@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
           this.allRecipes = data.recipes;
           this.totalPages = Math.ceil(this.allRecipes.length / this.pageSize);
           this.updatePaginatedRecipes();
-          console.log('Recipes fetched successfully:', this.allRecipes);
+          // console.log('Recipes fetched successfully:', this.allRecipes);
         } else {
-          console.warn('No recipes found or incorrect API response:', data);
+          // console.warn('No recipes found or incorrect API response:', data);
         }
       },
       error: (err) => {
