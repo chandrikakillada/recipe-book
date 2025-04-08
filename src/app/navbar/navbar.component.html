@@ -1,5 +1,13 @@
-<nav class="bg-white">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-10">
+<nav class="navbar">
+  <!-- <div class="wave">
+    <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+      <path
+        d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+        style="stroke: none; fill: rgb(221, 237, 209)"
+      ></path>
+    </svg>
+  </div> -->
+  <div class="main-bar px-2 sm:px-6 lg:px-8 py-10">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <button
@@ -53,7 +61,6 @@
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div>
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <ul class="flex gap-4 space-x-4 text-lg">
               <li>
                 <a
@@ -64,8 +71,10 @@
                 >
               </li>
               <li>
-                <a class="px-3 py-2 text-sm hover:border-b-2 text-gray-700"
-                  >Saved recipes</a
+                <a
+                  class="px-3 py-2 text-sm hover:border-b-2 text-gray-700"
+                  routerLink="/wishlist"
+                  >Wishlist</a
                 >
               </li>
               <li>
@@ -79,7 +88,7 @@
                 <a
                   href="#"
                   class="rounded-md px-3 py-2 text-sm text-black hover:bg-gray-700 hover:text-white"
-                  >Build your own recipe</a
+                  >Search any recipe</a
                 >
               </li>
             </ul>
@@ -89,12 +98,16 @@
       <div class="login" *ngIf="!loginStatus; else loggedInBlock">
         <ul class="flex gap-3">
           <li>
-            <a class="bg-green-300 px-6 py-3 rounded-xl" routerLink="/login"
+            <a
+              class="bg-red-800 text-white px-6 py-3 rounded-xl"
+              routerLink="/login"
               >Login</a
             >
           </li>
           <li>
-            <a class="bg-green-300 px-6 py-3 rounded-xl" href="/sign-up"
+            <a
+              class="bg-red-800 text-white px-6 py-3 rounded-xl"
+              href="/sign-up"
               >Don't have an account?</a
             >
           </li>
@@ -108,34 +121,12 @@
       </ng-template>
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-      >
-        <!-- search -->
-        <!-- <div class="max-w-md mx-auto w-100">
-          <input
-            type="search"
-            id="default-search"
-            class="block w-full p-4 ps-10 text-sm text-black border rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-            [(ngModel)]="searchTerm"
-            placeholder="Search recipes..."
-          />
-          <a
-            class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            [routerLink]="['/search']"
-            routerLinkActive="router-link-active"
-            (click)="getSearch()"
-          >
-            Search
-          </a>
-        </div> -->
-      </div>
+      ></div>
     </div>
   </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
   <div class="sm:hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pt-2 pb-3">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-black hover:bg-gray-700 hover:text-white" -->
       <a
         href="#"
         class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
@@ -158,6 +149,14 @@
         >Calendar</a
       >
     </div>
+  </div>
+  <div class="wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill=" rgb(168, 220, 168)"
+        d="M0,288L40,272C80,256,160,224,240,197.3C320,171,400,149,480,160C560,171,640,213,720,213.3C800,213,880,171,960,170.7C1040,171,1120,213,1200,240C1280,267,1360,277,1400,282.7L1440,288L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
+      ></path>
+    </svg>
   </div>
 </nav>
 

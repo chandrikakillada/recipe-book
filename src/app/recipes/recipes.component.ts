@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostAttributeToken, Inject, OnInit } from '@angular/core';
 import { SampleServiceService } from '../sample-service.service';
 import { CommonModule } from '@angular/common';
 
@@ -17,6 +17,8 @@ export class RecipesComponent {
   recipes: any[] = [];
   count: any;
   instructions: boolean = false;
+  liked: Boolean = false;
+  // savedRecipes: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -47,5 +49,13 @@ export class RecipesComponent {
       this.instructions = true;
     }
     console.log('Checked ingredients count:', this.count);
+  }
+
+  likedRecipe() {
+    this.liked = true;
+  }
+
+  unlikeRecipe() {
+    this.liked = false;
   }
 }

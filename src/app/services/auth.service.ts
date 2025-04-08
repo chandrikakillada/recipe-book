@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5002/api/auth';
+  private apiUrl = 'http://localhost:5003/api/auth';
 
   username = new Subject<string>();
   currentUsername = this.username.asObservable();
@@ -33,5 +33,9 @@ export class AuthService {
   }
   saveToken(token: string) {
     localStorage.setItem('token', token);
+  }
+
+  getWishlist() {
+    console.log(this.currentUsername);
   }
 }

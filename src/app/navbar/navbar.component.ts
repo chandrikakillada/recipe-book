@@ -46,15 +46,4 @@ export class NavbarComponent implements OnInit {
     this.authService.updateUsername('');
     this.loginStatus = false;
   }
-
-  getSearch() {
-    if (!this.searchTerm.trim()) {
-      this.errorMessage = 'Please enter a search term.';
-      return;
-    }
-    this.isLoading = true;
-    this.errorMessage = '';
-
-    this.service.getSearchTerm(this.searchTerm);
-  }
 }

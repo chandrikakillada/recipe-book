@@ -6,7 +6,7 @@
       class="container w-full max-w-sm border border-gray-200 rounded-lg shadow-sm dark:border-gray-400 mt-6"
       *ngFor="let recipe of paginatedRecipes"
     >
-      <a href="/recipe">
+      <a>
         <img
           class="p-8 rounded-t-lg"
           [src]="recipe.image"
@@ -14,7 +14,7 @@
         />
       </a>
       <div class="px-5 pb-5">
-        <a href="#">
+        <a>
           <h5 class="text-xl font-semibold tracking-tight">
             {{ recipe.name }}
           </h5>
@@ -31,6 +31,7 @@
           <button
             type="button"
             class="border-gray-600 dark:border-gray-400 focus:ring-4 focus:outline-none font-small rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+            (click)="moreDetails(recipe.id)"
           >
             View More
             <svg

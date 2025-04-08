@@ -1,0 +1,10 @@
+.main-bar {
+  background-color: rgb(168, 220, 168);
+}
+
+.wave {
+  width: 100%;
+  height: 36px;
+  position: absolute;
+  z-index: -1;
+}

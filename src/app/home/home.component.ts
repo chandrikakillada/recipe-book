@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { LoginComponent } from '../login/login.component';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -18,8 +19,9 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 6;
   totalPages: number = 0;
+  id: any;
 
-  constructor(private service: SampleServiceService) {}
+  constructor(private service: SampleServiceService, private router: Router) {}
 
   ngOnInit(): void {
     this.showAllRecipes();
@@ -32,15 +34,19 @@ export class HomeComponent implements OnInit {
           this.allRecipes = data.recipes;
           this.totalPages = Math.ceil(this.allRecipes.length / this.pageSize);
           this.updatePaginatedRecipes();
-          // console.log('Recipes fetched successfully:', this.allRecipes);
+          console.log(this.allRecipes);
         } else {
-          // console.warn('No recipes found or incorrect API response:', data);
         }
       },
       error: (err) => {
         console.error('Error fetching recipes:', err);
       },
     });
+  }
+
+  moreDetails(selected: any) {
+    this.id = this.allRecipes[selected].id - 1;
+    this.router.navigate([`/recipe/${this.id}`]);
   }
 
   updatePaginatedRecipes() {

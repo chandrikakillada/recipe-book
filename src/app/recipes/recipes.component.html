@@ -1,73 +1,119 @@
-<div
-  class="container flex flex-col md:flex-row bg-white border border-gray-200 rounded-lg shadow-sm max-w-4xl mx-auto my-8 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mt-20"
->
-  <img
-    [src]="recipe.image"
-    alt="{{ recipe.name }}"
-    class="object-cover rounded-t-lg w-full md:w-1/2 md:rounded-none md:rounded-s-lg"
-  />
-
-  <div class="p-6 leading-normal w-full md:w-1/2 bg-yellow-50 rounded-r-lg">
-    <h2 class="text-2xl font-bold mb-2">{{ recipe.name }}</h2>
-    <div class="text-gray-600 mb-4">
-      <span>Cuisine: {{ recipe.cuisine }}</span> |
-      <span>Difficulty: {{ recipe.difficulty }}</span> |
-      <span
-        >Rating: ⭐{{ recipe.rating }} ({{ recipe.reviewCount }} reviews)</span
-      >
+<div class="container-recipe">
+  <div class="main-container">
+    <div>
+      <img
+        [src]="recipe.image"
+        alt="{{ recipe.name }}"
+        class="recipe-image object-cover rounded-t-lg md:rounded-none md:rounded-s-lg"
+      />
     </div>
 
-    <!-- Time and Nutritional Info -->
-    <div class="flex flex-wrap gap-2 mb-4">
-      <span
-        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
-        >Prep Time: {{ recipe.prepTimeMinutes }} min</span
-      >
-      <span
-        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
-        >Cook Time: {{ recipe.cookTimeMinutes }} min</span
-      >
-      <span
-        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
-        >Calories: {{ recipe.caloriesPerServing }} kcal</span
-      >
-      <span
-        class="bg-yellow-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
-        >Servings: {{ recipe.servings }}</span
-      >
-    </div>
-
-    <h3 class="text-lg font-semibold mb-2 text-blue-800">Ingredients:</h3>
-    <ul class="mb-4 text-gray-700 list-disc list-inside space-y-1">
-      <li *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }}
-      </li>
-    </ul>
-
-    <div *ngIf="instructions">
-      <h3 class="text-lg font-semibold mb-2 text-blue-800">Instructions:</h3>
-      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-1">
-        <li *ngFor="let instruction of recipe.instructions">
-          {{ instruction }}
-        </li>
-      </ol>
-
-      <div class="mb-4">
-        <h4 class="text-md font-semibold text-blue-800 mb-2">Tags:</h4>
+    <div class="content-recipe">
+      <p>🕒 Quick Glance:</p>
+      <h2 class="text-2xl font-bold mb-2">{{ recipe.name }}</h2>
+      <div class="text-gray-600 mb-4">
+        <span>Cuisine: {{ recipe.cuisine }}</span> |
+        <span>Difficulty: {{ recipe.difficulty }}</span> |
         <span
-          *ngFor="let tag of recipe.tags"
-          class="bg-gray-200 text-gray-800 px-2 py-1 rounded mr-2 mb-2 inline-block text-sm"
+          >Rating: ⭐{{ recipe.rating }} ({{
+            recipe.reviewCount
+          }}
+          reviews)</span
         >
-          {{ tag }}
-        </span>
       </div>
 
-      <button
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
-        [routerLink]="['/']"
-      >
-        Go Back
-      </button>
+      <div class="main-content">
+        Ready in just
+        <ul>
+          <li>
+            <span
+              class="span-items bg-orange-300 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+              >Prep Time: {{ recipe.prepTimeMinutes }} min</span
+            >
+          </li>
+          <li>
+            <span
+              class="span-items bg-orange-300 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+              >Cook Time: {{ recipe.cookTimeMinutes }} min</span
+            >
+          </li>
+          <li>
+            <span
+              class="span-items bg-orange-300 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+              >Calories: {{ recipe.caloriesPerServing }} kcal</span
+            >
+          </li>
+        </ul>
+
+        <span
+          class="span-items bg-orange-300 text-gray-800 text-sm font-medium px-3 py-1 rounded-lg shadow-sm"
+          >Servings: {{ recipe.servings }}</span
+        >
+      </div>
+    </div>
+  </div>
+  <!-- <div class="heading-content">
+    <h2>🍽️ Let’s Get Cooking!</h2>
+    <p>
+      You’ve just unlocked {{ recipe.name }} – a delicious blend of taste and
+      tradition! Whether you're a seasoned chef or a curious foodie, this recipe
+      is designed to impress.
+    </p>
+  </div> -->
+  <video
+    class="recipe-video"
+    width="640"
+    height="360"
+    autoplay
+    loop
+    muted
+    playsinline
+    controls
+  >
+    <source
+      src="https://v1.pinimg.com/videos/mc/720p/c0/aa/25/c0aa25a6a04d0aca5ca4f8dd133fa5d5.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+  <div class="ingredients-card">
+    <div>
+      <h2>Grilled Chicken with Mango Salsa</h2>
+
+      <h3>Ingredients:</h3>
+      <ul>
+        <li>Chicken thighs</li>
+        <li>Mango, diced</li>
+        <li>Red onion, finely chopped</li>
+        <li>Cilantro, chopped</li>
+        <li>Lime juice</li>
+        <li>Jalapeño, minced</li>
+        <li>Salt and pepper to taste</li>
+        <li>Cooked rice for serving</li>
+      </ul>
+
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Season chicken thighs with salt and pepper.</li>
+        <li>Grill or bake chicken until fully cooked.</li>
+        <li>
+          In a bowl, combine diced mango, red onion, cilantro, jalapeño, and
+          lime juice.
+        </li>
+        <li>Dice cooked chicken and mix with salsa.</li>
+        <li>Serve over cooked rice.</li>
+      </ol>
+
+      <div class="tags">
+        <span class="tag">Chicken</span>
+        <span class="tag">Salsa</span>
+      </div>
+    </div>
+    <div class="ingredients-image">
+      <img
+        src="https://images.unsplash.com/photo-1551218808-94e220e084d2"
+        alt="Grilled Chicken with Mango Salsa"
+      />
     </div>
   </div>
 </div>

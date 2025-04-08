@@ -23,6 +23,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class LoginComponent {
   email: any;
   password: any;
+  likedRecipes: any[] | undefined;
 
   constructor(private authService: AuthService, private router: Router) {}
   login() {

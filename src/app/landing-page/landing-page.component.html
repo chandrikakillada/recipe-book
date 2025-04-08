@@ -1,13 +1,19 @@
-<div class="header">
-  <h2>Welcome to Recipe Book</h2>
-</div>
+<div class="search-container">
+  <input
+    type="search"
+    id="default-search"
+    class="text-sm text-black border rounded-lg bg-white focus:ring-blue-500 p-3"
+    required
+    [(ngModel)]="searchTerm"
+    placeholder="Search recipes..."
+  />
 
-<div class="landing">
-  <div class="hero">
-    <h1>Find Your Next Favorite Recipe!</h1>
-  </div>
-  <div class="cta">
-    <button>Browse Recipes</button>
-    <button>Search Recipes</button>
-  </div>
+  <a
+    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 px-6 py-3 rounded-lg"
+    [routerLink]="['/search']"
+    routerLinkActive="router-link-active"
+    (click)="getSearch()"
+  >
+    Search
+  </a>
 </div>
