@@ -1,6 +1,5 @@
 /* General Container */
 .recipe-grid-container {
-  background-color: #ffffff;
   padding: 20px;
   margin: 2rem;
 
@@ -23,7 +22,6 @@
 
 /* Recipe Card */
 .recipe-card {
-  background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);

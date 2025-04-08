@@ -18,7 +18,6 @@ export class RecipesComponent {
   count: any;
   instructions: boolean = false;
   liked: Boolean = false;
-  // savedRecipes: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -53,6 +52,8 @@ export class RecipesComponent {
 
   likedRecipe() {
     this.liked = true;
+    console.log(this.liked);
+    document.getElementById('wishlist')?.setAttribute('fill', 'red');
   }
 
   unlikeRecipe() {
