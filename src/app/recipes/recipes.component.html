@@ -10,7 +10,7 @@
 
     <div class="content-recipe">
       <h2>Cool choice!</h2>
-      <h2 class="text-2xl font-bold mb-2">{{ recipe.name }}</h2>
+      <h2 class="text-2xl font-bold mb-2 text-amber-950">{{ recipe.name }}</h2>
       <div class="text-gray-600 mb-4">
         <span>Cuisine: {{ recipe.cuisine }}</span> |
         <span>Difficulty: {{ recipe.difficulty }}</span> |
@@ -77,22 +77,26 @@
         recipe is designed to impress.
       </p>
     </div>
-    <video
-      class="recipe-video"
-      width="640"
-      height="360"
-      autoplay
-      loop
-      muted
-      playsinline
-      controls
-    >
-      <source
-        src="https://v1.pinimg.com/videos/mc/720p/c0/aa/25/c0aa25a6a04d0aca5ca4f8dd133fa5d5.mp4"
-        type="video/mp4"
-      />
-      Your browser does not support the video tag.
-    </video>
+
+    <div class="wave-block">
+      <video
+        class="recipe-video"
+        width="640"
+        height="360"
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+      >
+        <source
+          src="https://v1.pinimg.com/videos/mc/720p/c0/aa/25/c0aa25a6a04d0aca5ca4f8dd133fa5d5.mp4"
+          type="video/mp4"
+        />
+
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 
   <div class="ingredients-card">

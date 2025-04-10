@@ -1,11 +1,76 @@
-.search-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 768px;
-  margin: 0 auto;
-  gap: 4rem;
+.animated-image {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  opacity: 0;
+  animation: flyIn 1s ease-out forwards;
+  border-radius: 110px;
+  z-index: 0;
 }
-input {
-  width: 100%;
+
+.position-0 {
+  top: -300px;
+  left: -300px;
+  animation-delay: 0s;
+  animation-name: flyInTopLeft;
+  box-shadow: 5px 5px 15px gray;
+}
+
+.position-1 {
+  top: -300px;
+  right: -300px;
+  animation-delay: 0.3s;
+  animation-name: flyInTopRight;
+  box-shadow: 5px 5px 15px gray;
+}
+
+.position-2 {
+  bottom: -300px;
+  left: -300px;
+  animation-delay: 0.3s;
+  animation-name: flyInBottomLeft;
+  box-shadow: 5px 5px 15px gray;
+}
+
+.search-container {
+  position: absolute;
+  top: 300px;
+  left: 500px;
+}
+
+.text-box {
+  width: 400px;
+  margin-right: 16px;
+  z-index: 1;
+}
+
+@keyframes flyInTopLeft {
+  to {
+    top: 200px;
+    left: 100px;
+    transform: rotate(90deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes flyInTopRight {
+  to {
+    top: 200px;
+    right: 100px;
+    transform: rotate(90deg) scale(1);
+    opacity: 1;
+    box-shadow: 5px 5px 15px gray;
+  }
+}
+
+@keyframes flyInBottomLeft {
+  to {
+    top: 500px;
+    left: 300px;
+
+    transform: rotate(90deg) scale(1);
+    opacity: 1;
+    box-shadow: 5px 5px 15px gray;
+  }
 }

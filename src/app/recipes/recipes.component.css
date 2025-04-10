@@ -81,6 +81,10 @@ p {
 
 /* Responsive Design for Mobile */
 @media (max-width: 600px) {
+  .content-recipe {
+    margin-left: 0;
+    flex-direction: column;
+  }
   .recipe-info {
     flex-direction: column;
   }
@@ -91,6 +95,9 @@ p {
 
   .recipe-title {
     font-size: 24px;
+  }
+  .recipe-image {
+    width: auto;
   }
 }
 

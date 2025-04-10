@@ -2,10 +2,12 @@
   <input
     type="search"
     id="default-search"
-    class="text-sm text-black border rounded-lg bg-white focus:ring-blue-500 p-3"
+    class="text-box text-sm text-black border rounded-lg bg-white focus:ring-blue-500 p-3"
     required
     [(ngModel)]="searchTerm"
     placeholder="Search recipes..."
+    (input)="onInputChange($event)"
+    value="{{ typingValue }}"
   />
 
   <a
@@ -16,4 +18,16 @@
   >
     Search
   </a>
+
+  <div *ngFor="let item of suggestingValue">
+    <button (click)="selectItem(item)">{{ item }}</button>
+  </div>
+</div>
+<div class="image-container">
+  <img
+    *ngFor="let item of randomImages; let i = index"
+    [src]="item"
+    [ngClass]="['animated-image', 'position-' + i]"
+    alt="food image"
+  />
 </div>
