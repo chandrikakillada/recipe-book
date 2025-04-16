@@ -18,6 +18,40 @@ export class RecipesComponent {
   count: any;
   instructions: boolean = false;
   liked: Boolean = false;
+  ingredients: any[] = [];
+  blobs: any[] = [];
+  tips: any[] = [
+    {
+      title: " Tip from Grandma's Notebook #1",
+      tip: 'Always add your garlic after the onions. Burnt garlic = bitter disaster. And grandma knows. 🧄❤️',
+      blob: '/assets/blob.svg',
+    },
+    // {
+    //   title: " Tip from Grandma's Notebook #2",
+    //   tip: 'Taste as you go. Because salt is a blessing… until it’s a curse. 🧂👀',
+    //   blob: '/assets/blob.svg',
+    // },
+    // {
+    //   title: " Tip from Grandma's Notebook #3",
+    //   tip: "Don't crowd the pan. Even veggies need personal space to glow up and get crispy. 🥦💁‍♀️",
+    //   blob: '/assets/blob.svg',
+    // },
+    // {
+    //   title: " Tip from Grandma's Notebook #4",
+    //   tip: 'Butter makes everything better. No one ever cried over a golden-brown crust. 🧈🥲',
+    //   blob: '/assets/blob.svg',
+    // },
+    {
+      title: " Tip from Grandma's Notebook #5",
+      tip: 'Let it rest. That goes for steak... and your overachieving brain. 🥩🛌',
+      blob: '/assets/blob.svg',
+    },
+    {
+      title: " Tip from Grandma's Notebook #6",
+      tip: "If you're not dancing a little while stirring, it's not seasoned enough. Shake in those spices — and your shoulders. 🕺🌶️",
+      blob: '/assets/blob.svg',
+    },
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +70,10 @@ export class RecipesComponent {
         };
       });
     }
+    this.ingredients = this.recipe.ingredients;
+    console.log(this.ingredients[0].name);
   }
+
   checkBoxClick() {
     this.count = 0;
     this.recipe.ingredients.forEach((item: any) => {

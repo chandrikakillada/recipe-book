@@ -5,8 +5,27 @@
   object-fit: cover;
   opacity: 0;
   animation: flyIn 1s ease-out forwards;
-  border-radius: 110px;
+  border-radius: 150px;
   z-index: 0;
+}
+
+.animated-text {
+  color: rgb(33, 7, 7);
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  opacity: 0;
+  animation: flyIn 1s ease-out forwards;
+  border-radius: 150px;
+  z-index: 0;
+}
+
+.suggestion {
+  border: 1px #dcdcdc solid;
+
+  width: 100%;
+  text-align: left;
 }
 
 .position-0 {
@@ -20,7 +39,7 @@
 .position-1 {
   top: -300px;
   right: -300px;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
   animation-name: flyInTopRight;
   box-shadow: 5px 5px 15px gray;
 }
@@ -29,14 +48,35 @@
   bottom: -300px;
   left: -300px;
   animation-delay: 0.3s;
-  animation-name: flyInBottomLeft;
+  animation-name: BottomLeft;
   box-shadow: 5px 5px 15px gray;
 }
 
+.position-text-0 {
+  animation-delay: 0s;
+  animation-name: TopLeft;
+  opacity: 1;
+}
+
+.position-text-1 {
+  top: -300px;
+  right: -300px;
+  animation-delay: 0.2s;
+  animation-name: TopRight;
+}
+
+.position-text-2 {
+  bottom: -300px;
+  left: -300px;
+  animation-delay: 0.3s;
+  animation-name: BottomLeft;
+}
+
 .search-container {
-  position: absolute;
-  top: 300px;
-  left: 500px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
 }
 
 .text-box {
@@ -47,18 +87,22 @@
 
 @keyframes flyInTopLeft {
   to {
+    width: 250px;
+    height: 250px;
     top: 200px;
-    left: 100px;
-    transform: rotate(90deg) scale(1);
+    left: 50px;
+    transform: rotate(120deg) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes flyInTopRight {
   to {
-    top: 200px;
+    width: 300px;
+    height: 300px;
+    top: 300px;
     right: 100px;
-    transform: rotate(90deg) scale(1);
+    transform: rotate(150deg) scale(1);
     opacity: 1;
     box-shadow: 5px 5px 15px gray;
   }
@@ -66,11 +110,44 @@
 
 @keyframes flyInBottomLeft {
   to {
+    width: 180px;
+    height: 180px;
     top: 500px;
     left: 300px;
 
     transform: rotate(90deg) scale(1);
     opacity: 1;
     box-shadow: 5px 5px 15px gray;
+  }
+}
+
+@keyframes TopLeft {
+  to {
+    width: 250px;
+    height: 250px;
+    top: 400px;
+    left: 40px;
+  }
+}
+
+@keyframes TopRight {
+  to {
+    width: 300px;
+    height: 300px;
+    top: 300px;
+    right: 100px;
+
+    opacity: 1;
+  }
+}
+
+@keyframes BottomLeft {
+  to {
+    width: 180px;
+    height: 180px;
+    top: 500px;
+    left: 300px;
+
+    opacity: 1;
   }
 }

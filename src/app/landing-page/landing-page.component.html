@@ -1,26 +1,28 @@
 <div class="search-container">
-  <input
-    type="search"
-    id="default-search"
-    class="text-box text-sm text-black border rounded-lg bg-white focus:ring-blue-500 p-3"
-    required
-    [(ngModel)]="searchTerm"
-    placeholder="Search recipes..."
-    (input)="onInputChange($event)"
-    value="{{ typingValue }}"
-  />
-
-  <a
-    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 px-6 py-3 rounded-lg"
-    [routerLink]="['/search']"
-    routerLinkActive="router-link-active"
-    (click)="getSearch()"
-  >
-    Search
-  </a>
-
-  <div *ngFor="let item of suggestingValue">
-    <button (click)="selectItem(item)">{{ item }}</button>
+  <div>
+    <input
+      type="search"
+      id="default-search"
+      class="text-box text-sm text-black border rounded-lg bg-white focus:ring-blue-500 p-3"
+      required
+      [(ngModel)]="searchTerm"
+      placeholder="Search recipes..."
+      (input)="onInputChange($event)"
+      value="{{ typingValue }}"
+    />
+    <div *ngFor="let item of suggestingValue">
+      <button class="suggestion" (click)="selectItem(item)">{{ item }}</button>
+    </div>
+  </div>
+  <div>
+    <a
+      class="text-white bg-green-700 hover:bg-green-800 px-6 py-3 rounded-lg"
+      [routerLink]="['/search']"
+      routerLinkActive="router-link-active"
+      (click)="getSearch()"
+    >
+      Search
+    </a>
   </div>
 </div>
 <div class="image-container">
@@ -30,4 +32,9 @@
     [ngClass]="['animated-image', 'position-' + i]"
     alt="food image"
   />
+  <div *ngFor="let i of recipeFromImages; let j = index">
+    <p [ngClass]="['animated-text', 'position-text-' + j]">
+      {{ allRecipes[i - 1].name }}
+    </p>
+  </div>
 </div>

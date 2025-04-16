@@ -40,6 +40,8 @@ export class LandingPageComponent implements OnInit {
   randomImages: string[] = [];
   typingValue: any;
   suggestingValue: string[] = [];
+  recipeFromImages: any[] = [];
+  countIds!: any;
 
   constructor(private service: SampleServiceService) {}
 
@@ -53,22 +55,35 @@ export class LandingPageComponent implements OnInit {
 
     this.randomImages = this.getRandomStrings(this.allRecipeImages);
     console.log(this.searchTerm);
-    console.log(this.allRecipes);
+    this.storingIds();
+    console.log(this.recipeFromImages);
+    for (let i of this.recipeFromImages) {
+      i = i - 1;
+      console.log(this.allRecipes[i]);
+    }
   }
+
+  storingIds() {
+    for (let i of this.randomImages) {
+      this.countIds = i.split('/').pop()?.split('.')[0];
+      this.recipeFromImages.push(this.countIds);
+    }
+  }
+
   getRandomStrings(arr: string[]): string[] {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 3);
   }
 
   getSearch() {
-    if (!this.searchTerm.trim()) {
+    if (!this.typingValue.trim()) {
       this.errorMessage = 'Please enter a search term.';
       return;
     }
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.service.getSearchTerm(this.searchTerm);
+    this.service.getSearchTerm(this.typingValue);
   }
 
   onInputChange(event: Event) {

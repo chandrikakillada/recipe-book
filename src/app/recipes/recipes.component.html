@@ -68,27 +68,20 @@
       </div>
     </div>
   </div>
-  <div class="video-content">
-    <div class="heading-content">
-      <h2>🍽️ Let’s Get Cooking!</h2>
-      <p>
-        You’ve just unlocked {{ recipe.name }} – a delicious blend of taste and
-        tradition! Whether you're a seasoned chef or a curious foodie, this
-        recipe is designed to impress.
-      </p>
+  <div>
+    <div class="heading">
+      <div class="heading-content">
+        <h2>🍽️ Let’s Get Cooking!</h2>
+        <p>
+          You’ve just unlocked {{ recipe.name }} – a delicious blend of taste
+          and tradition! Whether you're a seasoned chef or a curious foodie,
+          this recipe is designed to impress.
+        </p>
+      </div>
     </div>
-
+    <!-- 
     <div class="wave-block">
-      <video
-        class="recipe-video"
-        width="640"
-        height="360"
-        autoplay
-        loop
-        muted
-        playsinline
-        controls
-      >
+      <video class="recipe-video" autoplay loop muted playsinline controls>
         <source
           src="https://v1.pinimg.com/videos/mc/720p/c0/aa/25/c0aa25a6a04d0aca5ca4f8dd133fa5d5.mp4"
           type="video/mp4"
@@ -96,47 +89,44 @@
 
         Your browser does not support the video tag.
       </video>
-    </div>
-  </div>
-
-  <div class="ingredients-card">
-    <div>
-      <h2>Grilled Chicken with Mango Salsa</h2>
-
-      <h3>Ingredients:</h3>
-      <ul>
-        <li>Chicken thighs</li>
-        <li>Mango, diced</li>
-        <li>Red onion, finely chopped</li>
-        <li>Cilantro, chopped</li>
-        <li>Lime juice</li>
-        <li>Jalapeño, minced</li>
-        <li>Salt and pepper to taste</li>
-        <li>Cooked rice for serving</li>
-      </ul>
-
-      <h3>Instructions:</h3>
-      <ol>
-        <li>Season chicken thighs with salt and pepper.</li>
-        <li>Grill or bake chicken until fully cooked.</li>
-        <li>
-          In a bowl, combine diced mango, red onion, cilantro, jalapeño, and
-          lime juice.
-        </li>
-        <li>Dice cooked chicken and mix with salsa.</li>
-        <li>Serve over cooked rice.</li>
-      </ol>
-
-      <div class="tags">
-        <span class="tag">Chicken</span>
-        <span class="tag">Salsa</span>
+    </div> -->
+    <!-- <div class="tips">
+      <div class="tips-card" *ngFor="let tip of tips">
+        <h2>{{ tip.title }}</h2>
+        <p>{{ tip.tip }}</p>
+      </div>
+    </div> -->
+    <div class="blob-container">
+      <div class="blob-card" *ngFor="let t of tips">
+        <img src="assets/blob.svg" alt="blob background" class="blob-bg" />
+        <img src="assets/blob2.svg" alt="blob background" class="blob-bg" />
+        <img src="assets/blob3.svg" alt="blob background" class="blob-bg" />
+        <div class="blob-content">
+          <h3>{{ t.title }}</h3>
+          <p>{{ t.tip }}</p>
+          <button class="button">like it? ♡</button>
+        </div>
       </div>
     </div>
-    <div class="ingredients-image">
-      <img
-        src="https://images.unsplash.com/photo-1551218808-94e220e084d2"
-        alt="Grilled Chicken with Mango Salsa"
-      />
+
+    <div class="mt-6 ingredients">
+      <div class="ingredient-text">
+        <h3 class="text-lg font-semibold text-amber-950 mb-2">
+          📝 Ingredients
+        </h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li *ngFor="let i of ingredients">
+            {{ i.name }}
+          </li>
+        </ul>
+      </div>
+      <div>
+        <img
+          src="assets/pantry.jpg"
+          alt="{{ recipe.name }}"
+          class="ingredient-blob"
+        />
+      </div>
     </div>
   </div>
 </div>
